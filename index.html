@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="main.css">
+
+        <title>User Input Practice</title>
+    </head>
+    <body>
+
+        <h1>Please enter info:</h1>
+        
+        <form id="the_form">
+
+            Username: <input type="text" placeholder="Username" id="username_textbox">
+            <br><br>
+            Password: <input type="text" placeholder="Password" id="password_textbox">
+            <br><br>
+            <button>Log in</button>
+
+        </form>
+
+        <br><br>
+
+        <div id="content">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Click here</a> for the secret!
+        </div>
+
+        <div id="intruder">INTRUDER! INTRUDER! INTRUDER!</div>
+
+        <script>
+
+            // get references
+            let h1Ref = document.querySelector("h1");
+            let theForm = document.getElementById("the_form");
+            let usernameTextbox = document.getElementById("username_textbox");
+            let passwordTextbox = document.getElementById("password_textbox");
+            let logInButton = document.querySelector("button");
+            let contentDiv = document.getElementById("content");
+            let intruderDiv = document.getElementById("intruder");
+            let body = document.querySelector("body");
+
+            // hide contentDiv and intruderDiv at first
+            contentDiv.style.display = "none";
+            intruderDiv.style.display = "none";
+
+            logInButton.onclick = function(event) {
+                // prevent the page from reloading
+                event.preventDefault();
+                
+                // capture user inputs
+                let username = usernameTextbox.value;
+                let password = passwordTextbox.value;
+
+                // check if username and password inputted is correct
+                // if the info is correct
+                if (username == "khye" && password == "pokemon") {
+                    // change h1Ref's innerHTML
+                    h1Ref.innerHTML = "Welcome " + username + "!";
+
+                    // change the background to a gif
+                    body.style.backgroundImage = 'url("images/confetti.gif")';
+
+                    // hide theForm, hide intruderDiv and show contentDiv
+                    theForm.style.display = "none";
+                    intruderDiv.style.display = "none";
+                    contentDiv.style.display = "block";
+                }  
+                
+                // if the info is wrong
+                else {
+                    // empty the textboxs
+                    usernameTextbox.value = "";
+                    passwordTextbox.value = "";
+
+                    // show intruderDiv
+                    intruderDiv.style.display = "block";
+                }
+            }
+
+        </script>
+
+    </body>
+</html>
